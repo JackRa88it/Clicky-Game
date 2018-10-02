@@ -58,8 +58,13 @@ class Game extends React.Component {
         card.picked = false;
         return card;
       });
+      let newHighScore = this.state.highScore;
+      if (this.state.score > this.state.highScore) {
+        newHighScore = this.state.score
+      }
       this.setState({
         score: 0,
+        highScore: newHighScore,
         cards: newCards
       });
     }

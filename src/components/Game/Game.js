@@ -41,19 +41,28 @@ class Game extends React.Component {
     ]
   };
 
-  pickCard = name => {
-    // if (card matching name . picked = false) {
+  clickCard = (name, picked) => {
+    if (!picked) {
+      let newCards = this.state.cards.map(card => {
+        if (card.name === name) {
+          card.picked = true;
+        }
+        return card;
+      });
       this.setState({
         score: this.state.score + 1,
-        picked: true
+        cards: newCards
       });
-    // } else {
+    } else {
+      let newCards = this.state.cards.map(card => {
+        card.picked = false;
+        return card;
+      });
       this.setState({
         score: 0,
-        // if score > high score, highscore = score
-        // reset cards from original array
-      })
-    // }
+        cards: newCards
+      });
+    }
   
   };
 
@@ -67,9 +76,11 @@ class Game extends React.Component {
         <div className="cards-container">
           {this.state.cards.map(card => (
             <Card 
+              key={card.name}
               name={card.name}
               img={card.img}
               picked={card.picked}
+              clickCard={this.clickCard}
             />
           ))}
         </div>

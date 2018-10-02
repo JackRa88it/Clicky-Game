@@ -1,8 +1,19 @@
 .header {
+  display: flex;
   width: 100%;
-  text-align: center;
-  font-size: 3rem;
-  text-decoration: underline;
-  color: #2A77AE;
+  align-items: center;
+  background: #282828;
+  color: rgb(83, 172, 235);
   margin-bottom: 50px;
+  border: 1px solid black;
+  justify-content: space-around;
+}
+
+.header > h1 {
+  font-size: 40px;
+}
+
+.header > p {
+  font-size: 18px;
+  font-style: italic;
 }

@@ -4,8 +4,9 @@ import "./Header.css";
 const Header = props => {
   return (
     <div className="header">
-      <h1>Score: {props.score}</h1>
-      <h1>High Score: {props.highScore}</h1>
+      <h1>Click Memory!</h1>
+      <p>Click any card to begin. Avoid clicking the same card twice!</p>
+      <h2>Score: {props.score} High Score: {props.highScore}</h2>
     </div>
   )
 }

@@ -65,9 +65,13 @@ class Game extends React.Component {
           highScore={this.state.highScore}
         />
         <div className="cards-container">
-          <Card 
-            cards={this.state.cards}
-          />
+          {this.state.cards.map(card => (
+            <Card 
+              name={card.name}
+              img={card.img}
+              picked={card.picked}
+            />
+          ))}
         </div>
       </div>
     );
@@ -75,19 +79,6 @@ class Game extends React.Component {
 }
 
 export default Game;
-
-// const List = props => {
-//   const notPurchased = props.groceries.filter(grocery => !grocery.purchased);
-//   return (
-//     <ul className="list-group">
-//       {notPurchased.map(item => (
-//         <li className="list-group-item" key={item.id}>
-//           {item.name}
-//         </li>
-//       ))}
-//     </ul>
-//   );
-// };
 
 // Game (contains game state and all variables, parent of header and cards)
 // Header (title, instructions, score/topscore)

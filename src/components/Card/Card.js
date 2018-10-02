@@ -3,7 +3,7 @@ import "./Card.css";
 
 const Card = props => (
   <div className="card">
-    <img alt={props.cards[0].name} src={props.cards[0].img} data-id={props.cards[0].name} />
+    <img alt={props.name} src={props.img} data-picked={props.picked} />
   </div>
 );
 

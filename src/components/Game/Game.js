@@ -41,9 +41,11 @@ class Game extends React.Component {
     ]
   };
 
+  // all the game logic is here
   clickCard = (name, picked) => {
+    let shuffledCards = this.shuffleCards(this.state.cards);
     if (!picked) {
-      let newCards = this.state.cards.map(card => {
+      let newCards = shuffledCards.map(card => {
         if (card.name === name) {
           card.picked = true;
         }
@@ -54,7 +56,7 @@ class Game extends React.Component {
         cards: newCards
       });
     } else {
-      let newCards = this.state.cards.map(card => {
+      let newCards = shuffledCards.map(card => {
         card.picked = false;
         return card;
       });
@@ -70,6 +72,17 @@ class Game extends React.Component {
     }
   
   };
+
+  // shuffle the cards array to display in random order
+  shuffleCards = array => {
+    let oldArray = array;
+    let newArray = [];
+    while (oldArray.length) {
+      const removed = oldArray.splice(Math.floor(Math.random() * oldArray.length), 1);
+      newArray.push(removed[0]);
+    }
+    return(newArray);
+  }
 
   render() {
     return (
@@ -95,7 +108,3 @@ class Game extends React.Component {
 }
 
 export default Game;
-
-// Game (contains game state and all variables, parent of header and cards)
-// Header (title, instructions, score/topscore)
-// Card (mapped from game.state)
